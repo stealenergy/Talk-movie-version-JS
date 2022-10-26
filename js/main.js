@@ -479,7 +479,7 @@ function exibirFilmesNaTela(listaDeFilmes) {
               <div class="col-md-4 p-2 fs-5 text-muted fw-bold">
               ${filme.Title}
               <div class="col-md-12 estrelas">
-              <input type="checkbox" class="form-check-input bg-success" name="curtir" id="${filme.imdbID}" value="checkedValue">
+              <input type="checkbox" class="form-check-input bg-success" onclick="salvar()" name="curtir" id="${filme.imdbID}" value="checkedValue">
               <label for="curtir" class="curtir text-warning">Like</label>
               </div>
     
