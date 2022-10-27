@@ -1,3 +1,4 @@
+
 const filmes = [
   {
     Title: "Star Wars: Episode IV - A New Hope",
@@ -470,19 +471,29 @@ exibirFilmesNaTela(filmes)
 // imprime na ttela 
 function exibirFilmesNaTela(listaDeFilmes) {
   // console.log(listaDeFilmes)
+  // const novoArray = []
   listaDeFilmes.forEach(filme => {
+  //  const indice = novoArray.map(function(e) {
+  //     return e.imdbID 
+  //   })
+  // novoArray.indexOf(filme.imdbID)
+  //    if(indice >= 0){
+      // console.log("teste")
+      // debugger
     elementoParaInserirFilmes.innerHTML += `
               <div class="col-md-2 p-2 imagem" id="opem-modal" onclick="toggleModal()">
               
-                  <img class="img-fluid" src="${filme.Poster}" alt="Carregando">
+                  <img class="img-fluid" src="${filme.Poster}" id="teste" alt="Carregando">
               </div>
               <div class="col-md-4 p-2 fs-5 text-muted fw-bold">
               ${filme.Title}
-              <div class="col-md-12 estrelas">
-              <input type="checkbox" class="form-check-input bg-success" onclick="salvar()" name="curtir" id="${filme.imdbID}" value="checkedValue">
-              <label for="curtir" class="curtir text-warning">Like</label>
+              <div class="col-md-12 estrelas"><p class="rating">
+              ${filme.imdbRating} IMDB Rating<p>
               </div>
-    
+              <div class="col-md-12 ">
+              <input type="checkbox" class="form-check-input text-center star" onclick="salvar(${filme.imdbID})" name="curtir" id="${filme.imdbID}" value="checkedValue">
+              </div>
+                
               </div>
               <div class="col-md-2 p-2 text-muted">
               ${filme.Runtime}
@@ -511,17 +522,9 @@ function exibirFilmesNaTela(listaDeFilmes) {
       
        
         `
-        // console.log(filme.Actors)
-  });
+      //  } else {
+      //     novoArray.push(listaDeFilmes)
+      //   }
+  });console.log("fabio")
+  // debugger
 }
-
-// function exibirModalNaTela(listaDeFilmes) {
-//   elementoParaInserirFilmes.innerHTML = listaDeFilmes.map((filme, i) => {
-
-//       return `
-
-    
-
-//       `;
-//     }).join('');
-// }

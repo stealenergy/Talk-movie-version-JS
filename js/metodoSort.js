@@ -7,9 +7,10 @@ ordenaPorAz.addEventListener('click', ordenaAz)
 ordenaPorZa.addEventListener('click', ordenaZa)
 
 function ordenaAno(){
-  let filmesOrdenados = filmes.sort((a,b)=> a.imdbRating - b.imdbRating)
+  let filmesOrdenados = filmes.sort((a,b)=> b.imdbRating - a.imdbRating)
     elementoParaInserirFilmes.innerHTML = ""
     exibirFilmesNaTela(filmesOrdenados)
+    rodarCheckBoxStatus()
 }
 function ordenaAz(){
   let filmesOrdenados = filmes.sort(function (a,b){
@@ -23,6 +24,7 @@ function ordenaAz(){
   })
   elementoParaInserirFilmes.innerHTML = ""
   exibirFilmesNaTela(filmesOrdenados)
+  rodarCheckBoxStatus()
 }
 
 function ordenaZa(){
@@ -37,4 +39,5 @@ function ordenaZa(){
   })
   elementoParaInserirFilmes.innerHTML = ""
   exibirFilmesNaTela(filmesOrdenados)
+  rodarCheckBoxStatus()
 }
