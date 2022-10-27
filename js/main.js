@@ -483,7 +483,7 @@ function exibirFilmesNaTela(listaDeFilmes) {
     elementoParaInserirFilmes.innerHTML += `
               <div class="col-md-2 p-2 imagem" id="opem-modal" onclick="toggleModal()">
               
-                  <img class="img-fluid" src="${filme.Poster}" id="teste" alt="Carregando">
+                  <img class="img-fluid teste" src="${filme.Poster}" id="" alt="Carregando">
               </div>
               <div class="col-md-4 p-2 fs-5 text-muted fw-bold">
               ${filme.Title}
