@@ -112,8 +112,8 @@ h2{
   font-size: smaller;
   color: whitesmoke;
 }
-#teste{position:relative}
-#teste:hover{right:-1px;box-shadow:0 8px 8px #666; 
+.teste{position:relative}
+.teste:hover{right:-1px;box-shadow:0 8px 8px #666; 
   transition: all .2s ease-in-out;
   transform: scale(1.1);
 }

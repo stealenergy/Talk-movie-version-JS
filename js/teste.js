@@ -463,6 +463,15 @@ const filmes = [
     Response: "True",
   },
 ];
+
+const openModalButton = document.querySelector("#open-modal");
+const closeModalButton = document.querySelector("#close-modal");
+const modal = document.querySelector("#modal");
+const fade = document.querySelector("#fade");
+
+
+
+
 const elementoParaInserirFilmes = document.getElementById('filmes')
 
 exibirFilmesNaTela(filmes)
@@ -470,30 +479,21 @@ exibirFilmesNaTela(filmes)
 
 // imprime na ttela 
 function exibirFilmesNaTela(listaDeFilmes) {
-  // console.log(listaDeFilmes)
-  // const novoArray = []
+  console.log(listaDeFilmes);
   listaDeFilmes.forEach(filme => {
-  //  const indice = novoArray.map(function(e) {
-  //     return e.imdbID 
-  //   })
-  // novoArray.indexOf(filme.imdbID)
-  //    if(indice >= 0){
-      // console.log("teste")
-      // debugger
+
     elementoParaInserirFilmes.innerHTML += `
-              <div class="col-md-2 p-2 imagem" id="opem-modal" onclick="toggleModal()">
+              <div class="col-md-2 p-2 imagem" id="opem-modal ${filme.imdbID}">
               
-                  <img class="img-fluid" src="${filme.Poster}" id="teste" alt="Carregando">
+                  <img class="img-fluid" id="foto" name="${filme.imdbID}" src="${filme.Poster}" alt="Carregando">
               </div>
-              <div class="col-md-4 p-2 fs-5 text-muted fw-bold">
+              <div id="teste" class="col-md-4 p-2 fs-5 text-muted fw-bold">
               ${filme.Title}
-              <div class="col-md-12 estrelas"><p class="rating">
-              ${filme.imdbRating} IMDB Rating<p>
+              <div class="col-md-12 estrelas">
+              <input type="checkbox" class="form-check-input bg-success" onclick="salvar(${filme.imdbID})" name="curtir" id="${filme.imdbID}" value="checkedValue">
+              <label for="curtir" class="curtir text-warning">Like</label>
               </div>
-              <div class="col-md-12 ">
-              <input type="checkbox" class="form-check-input text-center star" onclick="salvar()" name="curtir" id="${filme.imdbID}" value="checkedValue">
-              </div>
-                
+    
               </div>
               <div class="col-md-2 p-2 text-muted">
               ${filme.Runtime}
@@ -505,64 +505,57 @@ function exibirFilmesNaTela(listaDeFilmes) {
               ${filme.Writer}
               </div>
               <span class="linha"></span>
-
               <div id="fade" class="hide" onclick="toggleModal()">
               </div>
-              <div id="modal" class="hide">
-                  <div class="modal-header">
-                      <h2>${filme.Title}</h2>
-                      <button id="close-modal"  onclick="toggleModal()">Fechar</button>
-                  </div>
-                  <div class="modal-body">
-                      <p>${filme.Plot}</p>
-                  </div>
+              <div id="modal" class="">
               </div>
-            
-
-      
-       
         `
-      //  } else {
-      //     novoArray.push(listaDeFilmes)
-      //   }
-  });console.log("fabio")
-  // debugger
+  });
+ 
 }
 
+// setTimeout(()=>{
+//   let foto = document.querySelector("#foto");
+// console.log(foto);
+// },2);
+let container = document.querySelector(".container");
+let mod = document.getElementById("modal");
+let close = document.getElementById("close-modal");
 
-//  function filtrarModal(){
-//   const elementoModal = document.getElementById(this.imdbID)
-//   const elementoCorreto = elementoModal.Value
+container.addEventListener('click', (event)=>{
+  let click = event.target.id;
+  if(click == "foto"){
+    console.log(event.target.name);
+    let filmi = filmes.filter((testes)=>{
+      return testes.imdbID === event.target.name;
+    })
+    console.log(filmi[0].Title);
+    mod.innerHTML = ` 
+    
+    
+      <div class="modal-header">
+        <h2>${filmi[0].Title}</h2>
+        <button id="close-modal">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <p>${filmi[0].Plot}</p>
+      </div>
+   
+    `
+  }
+})
+close.addEventListener(function(){
+  console.log("teste")
+})
 
-//   modalFiltrado = elementoCorreto
 
 
-//  }
-                                                         // teste novo
-// let container = document.querySelector(".container");
 
-// container.addEventListener('click', (event)=>{
-//   let click = event.target.id;
-//   if(click == "foto"){
-//     console.log(event.target.name);
-//     let filmi = filmes.filter((testes)=>{
-//       return testes.imdbID === event.target.name;
-//     })
-//     console.log(filmi[0].Title);
-//     teste.innerHTML = ` 
-//     <div class="" id="opem-modal" onclick="toggleModal()">
-//     </div>
-//     <div id="fade" class="hide" onclick="toggleModal()">
-//     </div>
-//     <div id="modal" class="hide">
-//     <div class="modal-header">
-//     <h2>${filmi[0].Title}</h2>
-//     <button id="close-modal">Fechar</button>
-//     </div>
-//     <div class="modal-body">
-//     <p>${filmi[0].Plot}</p>
-//     </div>
-//     </div>
-//     `
-//   }
-// })
+// setTimeout(()=>{
+//   let total = filmes.forEach(function(teste){
+//     if(teste.imdbID === foto){
+//       console.log(teste.Title);
+//     }
+//   })
+//   console.log(total);
+// },3000)
